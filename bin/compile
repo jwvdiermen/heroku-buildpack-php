@@ -61,7 +61,8 @@ ln -s /app/php/bin/php bin/php
 # ensure the daemon user running Apache exists in the www-data group. Also create the www-data group if necessary.
 egrep -i "^www-data" /etc/group || groupadd www-data
 usermod -aG www-data daemon
-chown -R daemon:www-data www/
+chown -R root:www-data ./www
+chmod -R 2775 ./www
 
 cat >>boot.sh <<EOF
 for var in \`env|cut -f1 -d=\`; do
